@@ -1,0 +1,18 @@
+<div class="">
+
+  <label class="text-muted">Select your Category</label>
+  <select
+      name="filter"
+      ng-model="selectedItem"
+      ng-options="option for option in options"
+      ng-change="changeFilter()">
+  </select>
+
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="todo in todos | filter : {status:selectedItem}">
+      <input type="checkbox"
+      ng-click="vm.change(todo.id, $event)"
+      ng-checked="selection.indexOf(todo.id) > -1" /> &nbsp;&nbsp;
+      {{todo.text}}
+    </li>
+  </ul>
